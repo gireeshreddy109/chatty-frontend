@@ -48,11 +48,11 @@ const Auth = () => {
       <div className="w-full md:w-1/2 flex justify-center items-center">
         {isLogin ? (
           <div className="w-full md:w-[400px]">
-            <LoginForm onSwitch={() => setIsLogin(true)} />
+            <LoginForm onSwitch={() => setIsLogin(false)} />
           </div>
         ) : (
           <div className="w-full md:w-[400px]">
-            <RegisterForm onSwitch={() => setIsLogin(false)} />
+            <RegisterForm onSwitch={() => setIsLogin(true)} />
           </div>
         )}
       </div>
