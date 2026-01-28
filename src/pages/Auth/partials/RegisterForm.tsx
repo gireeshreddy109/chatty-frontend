@@ -46,7 +46,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitch }) => {
         },
     })
 
-    const onSubmit = (data: RegisterFormData) => mutation.mutate(data);
+    const onSubmit = (data: RegisterFormData) => mutation.mutate({email: data.email, password: data.password, userName: data.userName, fullName: data.fullName});
 
     return <>
         <h2 className="text-2xl font-bold text-dark mb-2">Create Your Account</h2>
