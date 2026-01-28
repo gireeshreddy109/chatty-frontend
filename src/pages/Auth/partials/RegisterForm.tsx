@@ -11,14 +11,14 @@ interface RegisterFormProps {
 }
 
 const registerSchema = z.object({
-    fullName: z.string().trim().min(2, {message: "Full name is too short"}),
+    fullName: z.string().trim().min(2, { message: "Full name is too short" }),
     userName: z.string()
-               .regex(/^[a-z0-9_]+$/, {message: "Username can only contain lowercase letters, numbers, and underscores"})
-               .min(2, {message: "Username is too short"})
-               .max(12, {message: "Username is too long"})
-               .transform(val => val.toLocaleLowerCase()),
-    email: z.email({message: "Invalid email address"}),
-    password: z.string().min(6, {message: "Password must be at least 6 characters long"}),
+        .regex(/^[a-z0-9_]+$/, { message: "Username can only contain lowercase letters, numbers, and underscores" })
+        .min(2, { message: "Username is too short" })
+        .max(12, { message: "Username is too long" })
+        .transform(val => val.toLocaleLowerCase()),
+    email: z.email({ message: "Invalid email address" }),
+    password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
     confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -56,7 +56,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitch }) => {
             <div>
                 <label htmlFor="fullName" className="block text-gray-700 mb-2 text-sm">Full Name</label>
                 <div className="relative mb-2">
-                    <User className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2"/>
+                    <User className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2" />
                     <input
                         {...register('fullName')}
                         className="text-sm w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
@@ -67,22 +67,22 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitch }) => {
             </div>
 
             <div>
-                <label htmlFor="username" className="block text-gray-700 mb-2 text-sm">UserName</label>
+                <label htmlFor="userName" className="block text-gray-700 mb-2 text-sm">UserName</label>
                 <div className="relative mb-2">
-                    <User className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2"/>
+                    <User className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2" />
                     <input
-                        {...register('username')}
+                        {...register('userName')}
                         className="text-sm w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="johndoe"
                     />
                 </div>
-                {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
+                {errors.userName && <p className="text-red-500 text-sm">{errors.userName.message}</p>}
             </div>
 
             <div>
                 <label htmlFor="email" className="block text-gray-700 mb-2 text-sm">Email</label>
                 <div className="relative mb-2">
-                    <Mail className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2"/>
+                    <Mail className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2" />
                     <input
                         {...register('email')}
                         type="email"
@@ -96,7 +96,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitch }) => {
             <div>
                 <label htmlFor="password" className="block text-gray-700 mb-2 text-sm">Password</label>
                 <div className="relative mb-2">
-                    <Lock className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2"/>
+                    <Lock className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2" />
                     <input
                         {...register('password')}
                         type="password"
@@ -110,7 +110,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitch }) => {
             <div>
                 <label htmlFor="confirmPassword" className="block text-gray-700 mb-2 text-sm">Confirm Password</label>
                 <div className="relative mb-2">
-                    <Lock className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2"/>
+                    <Lock className="absolute insset-y-0 left-3 size-5 text-gray-400 top-1/2 -translate-y-1/2" />
                     <input
                         {...register('confirmPassword')}
                         type="password"
@@ -126,7 +126,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitch }) => {
                 disabled={mutation.isPending}
                 className="mt-4 w-full bg-sky-500 hover:bg-sky-600 disabled:opacity-70 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex justify-center items-center"
             >
-                {mutation.isPending ? <Loader2 className="animate-spin size-5"/> : "Create Account"}
+                {mutation.isPending ? <Loader2 className="animate-spin size-5" /> : "Create Account"}
             </button>
         </form>
 
